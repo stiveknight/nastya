@@ -1,0 +1,74 @@
+﻿  MyForm.cpp
+c:\users\user\documents\visual studio 2015\projects\nastya\nastya\md5.h(328): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note:  см. объявление "sprintf"
+c:\users\user\documents\visual studio 2015\projects\nastya\nastya\md5.h(351): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\user\documents\visual studio 2015\projects\nastya\nastya\MyForm.h(82): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\time.h(505): note:  см. объявление "localtime"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1610): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1611): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1677): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1678): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1822): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1823): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1905): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(1907): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(2045): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(2047): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(2048): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(2050): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(2136): warning C4244: аргумент: преобразование "__int64" в "mpir_si", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(2138): warning C4244: аргумент: преобразование "unsigned __int64" в "mpir_ui", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3339): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3339): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3340): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3340): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3341): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3341): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3342): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3342): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3343): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3343): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3345): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3345): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3346): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3346): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3347): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3347): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3357): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3357): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3358): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3358): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3359): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3359): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3360): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3360): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3370): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3370): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3371): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3371): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3372): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3372): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3373): warning C4244: аргумент: преобразование "__int64" в "const long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3373): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned long", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3507): warning C4003: не хватает фактических параметров для макроопределения "min"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3508): warning C4003: не хватает фактических параметров для макроопределения "max"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3507): error C2059: синтаксическая ошибка: )
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3507): error C2334: непредвиденные лексемы перед ":"; пропуск вероятного тела функции
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3538): error C2143: синтаксическая ошибка: отсутствие ")" перед ";"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3538): error C2059: синтаксическая ошибка: )
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3538): error C2238: непредвиденные лексемы перед ";"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3544): warning C4003: не хватает фактических параметров для макроопределения "min"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3545): warning C4003: не хватает фактических параметров для макроопределения "max"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3575): error C3412: std::numeric_limits<mpq_class>: невозможно настроить шаблон в текущей области
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3581): warning C4003: не хватает фактических параметров для макроопределения "min"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3582): warning C4003: не хватает фактических параметров для макроопределения "max"
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\mpirxx.h(3612): error C3412: std::numeric_limits<mpf_class>: невозможно настроить шаблон в текущей области
+MyForm.cpp(5): error C2143: синтаксическая ошибка: отсутствие ";" перед "using namespace"
+MyForm.cpp(8): error C2976: std::array: слишком мало аргументов шаблон
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\array(22): note:  см. объявление "std::array"
+MyForm.cpp(8): error C3699: ^: это косвенное обращение невозможно использовать для типа "std::array"
+  MyForm.cpp(8): note: для продолжения работы компилятор заменил "^" на "*"
+MyForm.cpp(20): fatal error C1004: непредвиденное обнаружение конца файла
+  Source.cpp
+  Создание кода...
