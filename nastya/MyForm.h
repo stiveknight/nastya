@@ -6,7 +6,8 @@
 #include <windows.h>
 #include <msclr/marshal_cppstd.h>
 #include "md5.h"
-//#include <mpirxx.h>
+#include "BigInteger.h"
+#include "rsa.h"
 
 namespace nastya {
 
@@ -67,6 +68,9 @@ namespace nastya {
 	private: System::Windows::Forms::Button^  buttonRegistrsation;
 	private: System::Windows::Forms::Label^  labelReg;
 	private: System::Windows::Forms::Label^  labelDel;
+	private: System::Windows::Forms::Button^  decrypt_button;
+	private: System::Windows::Forms::Label^  label_not_found;
+
 
 
 
@@ -97,7 +101,7 @@ namespace nastya {
 			MD5 md5;
 			//md5.digestString(&toStringFromSysString(pass)[0u]);
 			for (auto& js : j_in["users"]) {
-				if (js["login"] == toStringFromSysString(logn) && js["pass"] == md5.digestString(&toStringFromSysString(pass)[0u])) {
+				if (js["login"] == md5.digestString(&toStringFromSysString(logn)[0u]) && js["pass"] == md5.digestString(&toStringFromSysString(pass)[0u])) {
 					i.close();
 					return true;
 				}
@@ -145,6 +149,8 @@ namespace nastya {
 			this->buttonRegistrsation = (gcnew System::Windows::Forms::Button());
 			this->labelReg = (gcnew System::Windows::Forms::Label());
 			this->labelDel = (gcnew System::Windows::Forms::Label());
+			this->decrypt_button = (gcnew System::Windows::Forms::Button());
+			this->label_not_found = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -330,11 +336,31 @@ namespace nastya {
 			this->labelDel->Size = System::Drawing::Size(0, 13);
 			this->labelDel->TabIndex = 17;
 			// 
+			// decrypt_button
+			// 
+			this->decrypt_button->Location = System::Drawing::Point(408, 485);
+			this->decrypt_button->Name = L"decrypt_button";
+			this->decrypt_button->Size = System::Drawing::Size(79, 23);
+			this->decrypt_button->TabIndex = 18;
+			this->decrypt_button->Text = L"Decrypt";
+			this->decrypt_button->UseVisualStyleBackColor = true;
+			this->decrypt_button->Click += gcnew System::EventHandler(this, &MyForm::decrypt_button_Click);
+			// 
+			// label_not_found
+			// 
+			this->label_not_found->AutoSize = true;
+			this->label_not_found->Location = System::Drawing::Point(533, 212);
+			this->label_not_found->Name = L"label_not_found";
+			this->label_not_found->Size = System::Drawing::Size(0, 13);
+			this->label_not_found->TabIndex = 19;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(725, 527);
+			this->Controls->Add(this->label_not_found);
+			this->Controls->Add(this->decrypt_button);
 			this->Controls->Add(this->labelDel);
 			this->Controls->Add(this->labelReg);
 			this->Controls->Add(this->buttonRegistrsation);
@@ -422,6 +448,7 @@ namespace nastya {
 
 	}
 	private: System::Void buttonSend_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->label_not_found->Text="";
 		String^ to = this->textBoxTo->Text;
 		String^ header = this->textBoxHeader->Text;
 		String^ textMes = this->richTextBox1->Text;
@@ -431,25 +458,48 @@ namespace nastya {
 		j["from"] = this->toStringFromSysString(managed);
 		j["to"] = this->toStringFromSysString(to);
 		j["header"] = this->toStringFromSysString(header);
-		j["text"] = this->toStringFromSysString(textMes);
 		j["time"] = this->currentDateTime();
 
-		std::string txt = j.dump();
+		string text = this->toStringFromSysString(textMes);
+		std::ifstream ii("users.json");
+		MD5 md5;
+		json j_in;
+		ii >> j_in;
+		pair <BI, BI> o_key;
+		bool f = 0;
+		for (auto& js : j_in["users"]) {
+			string s = j["to"];
+			String^ to = gcnew System::String(s.c_str());
+			if (js["login"] == md5.digestString(&toStringFromSysString(to)[0u])) {
+				string e = js["o_key"][0];
+				string N = js["o_key"][1];
+				o_key = make_pair(BI(e), BI(N));
+				f = 1;
+			}
+		}
+		ii.close();
+		if (f == 0) 
+			this->label_not_found->Text = "There is no such user!";
+		else
+		{
+			j["text"] = crypt(text, o_key);
 
-		std::ifstream i("mails.json");
-		json j_out;
-		i >> j_out;
-		j_out["mails"].push_back(j);
-		i.close();
-		std::ofstream o("mails.json");
-		o << j_out.dump();
-		o.close();
-		this->richTextBox1->Clear();
-		this->textBoxHeader->Clear();
-		this->textBoxTo->Clear();
-		//String ^ c = gcnew System::String(txt.c_str());
-		//MarshalString(c, txt);
-		//this->richTextBox2->AppendText(c);
+			std::string txt = j.dump();
+			std::ifstream i("mails.json");
+			json j_out;
+			i >> j_out;
+			j_out["mails"].push_back(j);
+			i.close();
+			std::ofstream o("mails.json");
+			o << j_out.dump();
+			o.close();
+			this->richTextBox1->Clear();
+			this->textBoxHeader->Clear();
+			this->textBoxTo->Clear();
+			//String ^ c = gcnew System::String(txt.c_str());
+			//MarshalString(c, txt);
+			//this->richTextBox2->AppendText(c);
+		}
 	}
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 		this->buttonDelMes->Enabled = false;
@@ -469,15 +519,21 @@ namespace nastya {
 		json j_in;
 		i >> j_in;
 		this->richTextBox2->Clear();
+		
 		for (auto& js : j_in["mails"]) {
 			if (js["time"] == ss || js["time"] == ss1) {
-				for (json::iterator it = js.begin(); it != js.end(); ++it) {
-					string k = it.key();
-					string v = it.value();
-					string tmpp = k + ": " + v + "\n";
-					String^ tmp = gcnew System::String(tmpp.c_str());
-					this->richTextBox2->AppendText(tmp);
-				}
+				string from = js["from"];
+				string to = js["to"];
+				string time = js["time"];
+				string header = js["header"];
+				string text = js["text"];
+				 string tmpp = "from : " + from + "\n"
+					+ "to: " + to + "\n"
+					+ "time: " + time + "\n"
+					+ "header:" + header + "\n"
+					+ "text: " + text + "\n";
+				 String^ tmp = gcnew System::String(tmpp.c_str());
+				 this->richTextBox2->AppendText(tmp);
 			}
 
 		}
@@ -515,19 +571,34 @@ namespace nastya {
 		json j_in, j_out;
 		i >> j_in;
 		i.close();
+		MD5 md5;
 		bool check = true;
 		for (auto& js : j_in["users"]) {
-			if (js["login"] == toStringFromSysString(logn)) {
+			if (js["login"] == md5.digestString(&toStringFromSysString(logn)[0u])) {
 				check = false;
 				this->labelReg->Text = "This user already exists";
 				return;
 			}
 		}
 		if (check) {
-			MD5 md5;
 			json j;
-			j["login"] = this->toStringFromSysString(logn);
+			//j["login"] = this->toStringFromSysString(logn);
+			j["login"] = md5.digestString(&toStringFromSysString(logn)[0u]);
 			j["pass"] = md5.digestString(&toStringFromSysString(pass)[0u]);
+
+			pair <pair<BI, BI>, pair<BI, BI>> keys = gen_keys();
+			vector<string> o_key;
+			o_key.push_back(keys.first.first.to_string());
+			o_key.push_back(keys.first.second.to_string());
+			json j_vec1(o_key);
+			j["o_key"] = j_vec1;
+
+			vector<string> s_key;
+			s_key.push_back(keys.second.first.to_string());
+			s_key.push_back(keys.second.second.to_string());
+			json j_vec2(s_key);
+			j["s_key"] = j_vec2;
+
 			std::string txt = j.dump();
 			std::ifstream ii("users.json");
 			ii >> j_out;
@@ -564,5 +635,49 @@ namespace nastya {
 	}
 
 
+private: System::Void decrypt_button_Click(System::Object^  sender, System::EventArgs^  e) {
+	String^ s = this->listBoxInbox->SelectedItem->ToString();
+	string ss = toStringFromSysString(s);
+	string ss1 = ss.substr(0, 18);
+	ss = ss.substr(0, 19);
+
+	std::ifstream i("mails.json");
+	json j_in;
+	i >> j_in;
+	this->richTextBox2->Clear();
+
+	for (auto& js : j_in["mails"]) {
+		if (js["time"] == ss || js["time"] == ss1) {
+			string from = js["from"];
+			string to = js["to"];
+			string time = js["time"];
+			string header = js["header"];
+			string text = js["text"];
+
+			std::ifstream ii("users.json");
+			json jj_in;
+			ii >> jj_in;
+			pair <BI, BI> s_key;
+			for (auto& jss : jj_in["users"]) {
+				if (jss["login"] == js["to"]) {
+					string d = jss["s_key"][0];
+					string N = jss["s_key"][1];
+					s_key = make_pair(BI(d), BI(N));
+				}
+			}
+			ii.close();
+			text = decrypt(text, s_key);
+			
+			string tmpp = "from : " + from + "\n"
+				+ "to: " + to + "\n"
+				+ "time: " + time + "\n"
+				+ "header:" + header + "\n"
+				+ "text: " + text + "\n";
+			String^ tmp = gcnew System::String(tmpp.c_str());
+			this->richTextBox2->AppendText(tmp);
+		}
+	}
+	i.close();
+}
 };
 }
